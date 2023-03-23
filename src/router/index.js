@@ -3,8 +3,17 @@ import { createRouter, createWebHistory } from 'vue-router'
 const routes = [
   {
     path: '/',
-    name: 'home',
-    //component: HomeView
+    redirect: '/app/start'
+  },
+  {
+    path: '/app/start',
+    name: 'Start',
+    meta: {
+      layout: 'Application'
+    },
+    component: function () {
+      return import('../views/StartPage.vue');
+    }
   },
 ]
 

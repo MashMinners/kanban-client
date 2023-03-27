@@ -2,7 +2,10 @@
   <div id="app-header">
     <prime-toolbar>
       <template #start>
-        <prime-button icon="pi pi-arrow-right" @click="visible = true" />
+        <div class="card flex justify-content-center">
+          <prime-button type="button" label="Меню" @click="toggle" aria-haspopup="true" aria-controls="overlay_menu" />
+          <prime-menu ref="menu" id="overlay_menu" :model="menu" :popup="true" />
+        </div>
       </template>
     </prime-toolbar>
   </div>
@@ -10,22 +13,39 @@
     <component :is="getComponent"/>
   </div>
   <div id="overlays">
-    <prime-sidebar v-model:visible="visible">
-      <h2>Sidebar</h2>
-      <p>Lorem ipsum dolor sit amet</p>
-    </prime-sidebar>
+
   </div>
 </template>
 
 <script>
-import {mapGetters} from "vuex";
 
 export default {
   name: "ApplicationLayout",
   data() {
     return {
-      visible: false
+      visible: false,
+      menu: [
+          {
+            label: 'Главная',
+            icon: 'pi pi-fw pi-plus',
+            to: '/'
+          },
+        {
+          label: 'Накладные',
+          icon: 'pi pi-fw pi-plus',
+          to: '/app/invoices'
+      },
+      {
+        label: 'Delete',
+        icon: 'pi pi-fw pi-trash'
+      }
+    ]
     }
+  },
+  methods: {
+    toggle(event) {
+      this.$refs.menu.toggle(event);
+    },
   },
   computed: {
     getComponent(){

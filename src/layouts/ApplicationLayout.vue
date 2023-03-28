@@ -1,13 +1,13 @@
 <template>
   <div id="app-header">
-    <prime-toolbar>
+    <prime-menubar :model="menu">
       <template #start>
-        <div class="card flex justify-content-center">
-          <prime-button type="button" label="Меню" @click="toggle" aria-haspopup="true" aria-controls="overlay_menu" />
-          <prime-menu ref="menu" id="overlay_menu" :model="menu" :popup="true" />
-        </div>
+        <img alt="logo" src="https://primefaces.org/cdn/primevue/images/logo.svg" height="40" class="mr-2" />
       </template>
-    </prime-toolbar>
+      <template #end>
+        <prime-input-text placeholder="Search" type="text" />
+      </template>
+    </prime-menubar>
   </div>
   <div id="app-content">
     <component :is="getComponent"/>
@@ -25,21 +25,36 @@ export default {
     return {
       visible: false,
       menu: [
-          {
-            label: 'Главная',
-            icon: 'pi pi-fw pi-plus',
-            to: '/'
-          },
         {
-          label: 'Накладные',
-          icon: 'pi pi-fw pi-plus',
-          to: '/app/invoices'
-      },
-      {
-        label: 'Delete',
-        icon: 'pi pi-fw pi-trash'
-      }
-    ]
+          label: 'Главная',
+          icon: 'pi pi-fw pi-file',
+          items: [
+            {
+              label: 'Накладные',
+              icon: 'pi pi-fw pi-bookmark',
+              items: [
+                {
+                  label: 'Создать',
+                  icon: 'pi pi-fw pi-plus',
+                  to: '/app/invoices/new'
+                },
+                {
+                  label: 'Показать',
+                  icon: 'pi pi-fw pi-book',
+                  to: '/app/invoices'
+                }
+              ]
+            },
+            {
+              separator: true
+            },
+            {
+              label: 'Выход',
+              icon: 'pi pi-fw pi-sign-out'
+            }
+          ]
+        },
+      ]
     }
   },
   methods: {

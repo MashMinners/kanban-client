@@ -20,6 +20,7 @@ import TabPanel from 'primevue/tabpanel';
 import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
 import Tag from 'primevue/tag';
+import Menubar from 'primevue/menubar';
 import ('primevue/resources/themes/tailwind-light/theme.css')
 import ('primevue/resources/primevue.min.css')
 import ('primeicons/primeicons.css')
@@ -27,7 +28,7 @@ import ('primeflex/primeflex.css');
 export default {
   modules: [
       InputText, Button, Fieldset, ProgressBar, Dialog,  Message, Textarea, Image, Card, Knob, Panel, Toolbar, Sidebar,
-      Menu, TabView, TabPanel, DataTable, Column, Tag
+      Menu, TabView, TabPanel, DataTable, Column, Tag, Menubar
   ],
   directives: [
         {name: "tooltip", subject: Tooltip}

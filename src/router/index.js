@@ -31,6 +31,16 @@ const routes = [
       return import('../views/InvoicesPage.vue');
     }
   },
+  {
+    path: '/app/invoices/new',
+    name: 'CreateInvoice',
+    meta: {
+      layout: 'Application'
+    },
+    component: function () {
+      return import('../views/InvoicePage.vue');
+    }
+  },
 ]
 
 const router = createRouter({

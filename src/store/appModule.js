@@ -7,16 +7,23 @@ export const appModule = {
             {
                 id: '1',
                 departmentId: 1,
-                departmentName: 'Хирургия',
+                departmentName: 'Хирургическое отделение',
                 statusId: 1,
-                statusDescription: 'В работе'
+                statusDescription: 'Завершен'
             },
             {
                 id: '2',
                 departmentId: 2,
-                departmentName: 'Терапия',
+                departmentName: 'Терапевтическое отделение',
                 statusId: 2,
-                statusDescription: 'Отработан'
+                statusDescription: 'В работе'
+            },
+            {
+                id: '3',
+                departmentId: 3,
+                departmentName: 'Инфекционное отделение',
+                statusId: 3,
+                statusDescription: 'Отменен'
             }
         ],
 

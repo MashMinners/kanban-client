@@ -9,21 +9,24 @@ export const appModule = {
                 departmentId: 1,
                 departmentName: 'Хирургическое отделение',
                 statusId: 1,
-                statusDescription: 'Завершен'
+                statusDescription: 'Завершен',
+                invoiceDate: '2023-03-30'
             },
             {
                 id: '2',
                 departmentId: 2,
                 departmentName: 'Терапевтическое отделение',
                 statusId: 2,
-                statusDescription: 'В работе'
+                statusDescription: 'В работе',
+                invoiceDate: '2023-03-30'
             },
             {
                 id: '3',
                 departmentId: 3,
                 departmentName: 'Инфекционное отделение',
                 statusId: 3,
-                statusDescription: 'Отменен'
+                statusDescription: 'Отменен',
+                invoiceDate: '2023-03-30'
             }
         ],
 

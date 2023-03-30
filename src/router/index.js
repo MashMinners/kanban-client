@@ -21,6 +21,7 @@ const routes = [
       return import('../views/StartPage.vue');
     }
   },
+  //INVOICES
   {
     path: '/app/invoices',
     name: 'Invoices',
@@ -28,17 +29,27 @@ const routes = [
       layout: 'Application'
     },
     component: function () {
-      return import('../views/InvoicesPage.vue');
+      return import('../views/Invoices/InvoicesPage.vue');
     }
   },
   {
     path: '/app/invoices/new',
-    name: 'CreateInvoice',
+    name: 'InvoiceCreate',
     meta: {
       layout: 'Application'
     },
     component: function () {
-      return import('../views/InvoicePage.vue');
+      return import('../views/Invoices/InvoiceCreatePage.vue');
+    }
+  },
+  {
+    path: '/app/invoices/show/:id',
+    name: 'InvoiceShow',
+    meta: {
+      layout: 'Application'
+    },
+    component: function () {
+      return import('../views/Invoices/InvoiceShowPage.vue');
     }
   },
 ]

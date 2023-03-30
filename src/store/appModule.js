@@ -29,11 +29,17 @@ export const appModule = {
                 invoiceDate: '2023-03-30'
             }
         ],
+        permissions : {
+            DeleteInvoice: true
+        }
 
     }),
     getters: {
         getInvoices(state){
             return state.invoices
+        },
+        getPermissions(state){
+            return state.permissions
         }
 
     },

@@ -33,7 +33,8 @@
           </prime-column>
           <prime-column>
             <template #body="slotProps">
-              <prime-button class="p-button-sm" label="Открыть" icon="pi pi-search" @click="showId(slotProps.data.id)" />
+              <prime-button class="p-button-sm mr-2" label="Открыть" icon="pi pi-search" @click="showId(slotProps.data.id)" />
+              <prime-button class="p-button-danger p-button-sm" label="Удалить" icon="pi pi-trash" v-if="getPermissions.DeleteInvoice" @click="showId(slotProps.data.id)" />
             </template>
           </prime-column>
         </prime-data-table>
@@ -50,7 +51,7 @@ export default {
     return {
       filters: {
         global: { value: null, matchMode: FilterMatchMode.CONTAINS }
-      }
+      },
     };
   },
   methods: {
@@ -74,7 +75,8 @@ export default {
   },
   computed:{
     ...mapGetters({
-      getInvoices: "app/getInvoices"
+      getInvoices: "app/getInvoices",
+      getPermissions: "app/getPermissions"
     })
   }
 }

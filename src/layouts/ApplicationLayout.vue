@@ -30,20 +30,8 @@ export default {
           icon: 'pi pi-fw pi-file',
           items: [
             {
-              label: 'Накладные',
-              icon: 'pi pi-fw pi-bookmark',
-              items: [
-                {
-                  label: 'Создать',
-                  icon: 'pi pi-fw pi-plus',
-                  to: '/app/invoices/new'
-                },
-                {
-                  label: 'Показать',
-                  icon: 'pi pi-fw pi-book',
-                  to: '/app/invoices'
-                }
-              ]
+              label: 'Экспорт в Excel',
+              icon: 'pi pi-fw pi-file-excel',
             },
             {
               separator: true
@@ -52,7 +40,39 @@ export default {
               label: 'Выход',
               icon: 'pi pi-fw pi-sign-out'
             }
-          ]
+          ],
+        },
+        {
+          label: 'Накладные',
+          icon: 'pi pi-fw pi-briefcase',
+          items: [
+            {
+              label: 'Создать',
+              icon: 'pi pi-fw pi-plus',
+              to: '/app/invoices/new'
+            },
+            {
+              label: 'Показать',
+              icon: 'pi pi-fw pi-book',
+              to: '/app/invoices'
+            }
+          ],
+        },
+        {
+          label: 'Отчетность',
+          icon: 'pi pi-fw pi-percentage',
+          items: [
+            {
+              label: 'Своды',
+              icon: 'pi pi-fw pi-file',
+              to: '/app/reports/vaults'
+            },
+            {
+              label: 'Графики',
+              icon: 'pi pi-fw pi-chart-line',
+              to: '/app/reports/charts'
+            }
+          ],
         },
       ]
     }

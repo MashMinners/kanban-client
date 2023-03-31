@@ -1,5 +1,14 @@
 <template>
   <div class="card">
+    <prime-toolbar class="mb-4">
+      <template #start>
+        <prime-button label="New" icon="pi pi-plus" severity="success" class="mr-2"/>
+        <prime-button label="Delete" icon="pi pi-trash" severity="danger"/>
+      </template>
+      <template #end>
+        <prime-button label="Export" icon="pi pi-upload" severity="help"/>
+      </template>
+    </prime-toolbar>
         <prime-data-table
             :class="`p-datatable-sm`"
             :value="getInvoices"
@@ -19,7 +28,6 @@
           </template>
           <template #empty> Накладных пока не сформировано </template>
           <template #loading> Идет загрузка накладных </template>
-          <prime-column style="width: 10%" field="id" header="Идентификатор"></prime-column>
           <prime-column  field="invoiceDate" header="Дата создания"></prime-column>
           <prime-column field="departmentName" header="Отделение">
             <template #body="{ data }">
@@ -33,8 +41,8 @@
           </prime-column>
           <prime-column>
             <template #body="slotProps">
-              <prime-button class="p-button-sm mr-2" label="Открыть" icon="pi pi-search" @click="showId(slotProps.data.id)" />
-              <prime-button class="p-button-danger p-button-sm" label="Удалить" icon="pi pi-trash" v-if="getPermissions.DeleteInvoice" @click="showId(slotProps.data.id)" />
+              <prime-button class="p-button-success p-button-sm mr-2"  icon="pi pi-search" @click="showId(slotProps.data.id)" />
+              <prime-button class="p-button-danger p-button-sm"  icon="pi pi-trash" v-if="displayDeleteButton(slotProps.data)" @click="showId(slotProps.data.id)" />
             </template>
           </prime-column>
         </prime-data-table>
@@ -58,6 +66,13 @@ export default {
     showId(id){
       this.$router.push('/app/invoices/show'+ '/' + id);
       console.log(id)
+    },
+    displayDeleteButton(data){
+      if(data.statusId === 1){
+        return false;
+      }else{
+        return this.getPermissions.DeleteInvoice;
+      }
     },
     getSeverity(invoice) {
       switch (invoice.statusId) {

@@ -42,7 +42,7 @@
           <prime-column>
             <template #body="slotProps">
               <prime-button class="p-button-success p-button-sm mr-2"  icon="pi pi-search" @click="showId(slotProps.data.id)" />
-              <prime-button class="p-button-danger p-button-sm"  icon="pi pi-trash" v-if="displayDeleteButton(slotProps.data)" @click="showId(slotProps.data.id)" />
+              <prime-button class="p-button-danger p-button-sm"  icon="pi pi-trash"  @click="remove(slotProps.data)" :disabled="displayDeleteButton(slotProps.data)"/>
             </template>
           </prime-column>
         </prime-data-table>
@@ -52,7 +52,7 @@
 
 <script>
 import { FilterMatchMode } from 'primevue/api';
-import {mapGetters} from "vuex";
+import {mapGetters, mapMutations} from "vuex";
 export default {
   name: "InvoicesPage",
   data() {
@@ -63,13 +63,19 @@ export default {
     };
   },
   methods: {
+    ...mapMutations({
+      removeRow: "app/REMOVE_INVOICE"
+    }),
     showId(id){
       this.$router.push('/app/invoices/show'+ '/' + id);
       console.log(id)
     },
+    remove(data) {
+      this.removeRow()
+    },
     displayDeleteButton(data){
       if(data.statusId === 1){
-        return false;
+        return true;
       }else{
         return this.getPermissions.DeleteInvoice;
       }

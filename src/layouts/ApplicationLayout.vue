@@ -48,7 +48,7 @@ export default {
           items: [
             {
               label: 'Создать',
-              icon: 'pi pi-fw pi-plus',
+              icon: 'pi pi-fw pi-plus-circle',
               to: '/app/invoices/new'
             },
             {

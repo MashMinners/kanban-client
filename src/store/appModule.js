@@ -30,7 +30,7 @@ export const appModule = {
             }
         ],
         permissions : {
-            DeleteInvoice: true
+            DeleteInvoice: false
         }
 
     }),
@@ -44,6 +44,9 @@ export const appModule = {
 
     },
     mutations: {
+        ['REMOVE_INVOICE'] (state, id) {
+            delete state.invoices
+        }
 
     },
     actions: {

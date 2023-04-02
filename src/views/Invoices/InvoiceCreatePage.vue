@@ -1,5 +1,16 @@
 <template>
   <prime-message severity="info" :closable="false">Для создания накладной нажмите на кнопку "Создать"</prime-message>
+  <prime-toolbar class="mb-4">
+    <template #start>
+      <prime-button label="Создать" icon="pi pi-plus-circle" severity="success" class="mr-2"/>
+      <prime-button label="Отменить" icon="pi pi-undo" severity="danger"/>
+    </template>
+    <template #end>
+      <prime-button label="Export" icon="pi pi-upload" severity="help"/>
+    </template>
+  </prime-toolbar>
+
+
   <prime-data-view :value="products">
     <template #list="slotProps">
       <div class="col-12">

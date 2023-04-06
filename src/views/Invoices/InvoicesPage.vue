@@ -1,14 +1,5 @@
 <template>
   <div class="card">
-    <prime-toolbar class="mb-4">
-      <template #start>
-        <prime-button label="New" icon="pi pi-plus" severity="success" class="mr-2"/>
-        <prime-button label="Delete" icon="pi pi-trash" severity="danger"/>
-      </template>
-      <template #end>
-        <prime-button label="Export" icon="pi pi-upload" severity="help"/>
-      </template>
-    </prime-toolbar>
         <prime-data-table
             :class="`p-datatable-sm`"
             :value="getInvoices"
@@ -71,7 +62,7 @@ export default {
       console.log(id)
     },
     remove(data) {
-      this.removeRow()
+      this.removeRow(data.id)
     },
     displayDeleteButton(data){
       if(data.statusId === 1){

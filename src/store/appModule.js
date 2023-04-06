@@ -45,30 +45,18 @@ export const appModule = {
     },
     mutations: {
         ['REMOVE_INVOICE'] (state, id) {
-            delete state.invoices
+            const indexToRemove = state.invoices.findIndex((pl) => pl.id === id);
+            state.invoices.splice(indexToRemove, 1);
         }
 
     },
     actions: {
-        async checkRatingRecordStatusAction({state, commit}, ratingRecordId) {
-            const params = {ratingRecordId: ratingRecordId}
+        async removeInvoiceAction({state, commit}, invoiceId) {
+            const params = {invoiceId: invoiceId};
             const response = await axios.get(connections.api.production ? connections.api.production : connections.api.dev, {params});
-            if(response.data.status === 'not voted'){
-                commit('NOT_VOTED', response)
-                commit('SET_RATING_RECORD_ID', ratingRecordId)
-                return false;
+            if(response.data.status === 'deleted'){
+                commit('REMOVE_INVOICE', invoiceId)
             }
-            else {
-                commit('VOTED')
-                return true;
-            }
-        },
-        async sendVoteAction({state, commit}){
-            const response = await axios.post(connections.api.production ? connections.api.production : connections.api.dev, {
-                ratingRecordId: state.dto.ratingRecordId,
-                ratingRecordGrade: state.dto.ratingRecordGrade,
-                ratingRecordComment: state.dto.ratingRecordComment});
-                commit('FINISH', response)
         }
     },
     namespaced: true
